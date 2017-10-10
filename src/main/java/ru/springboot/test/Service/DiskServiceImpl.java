@@ -26,9 +26,9 @@ public class DiskServiceImpl implements DiskService {
         String hsq = "from Disk";
         Query query = session.createQuery("from Disk");
 //        Query query = session.createSQLQuery("select * from disk");
-        List result = query.list();
+        List<Disk> result = query.list();
         session.getTransaction().commit();
-        System.out.println(result.size());
+        System.out.println(result);
         session.close();
         return result;
     }
