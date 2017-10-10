@@ -1,0 +1,30 @@
+-- Table Disk
+DROP TABLE Disk IF EXISTS;
+
+CREATE TABLE Disk (
+  id INTEGER NOT NULL PRIMARY KEY,
+  name VARCHAR(50),
+  description  VARCHAR(300)
+);
+
+-- Table User
+DROP TABLE User IF EXISTS;
+
+CREATE TABLE User (
+  id INTEGER NOT NULL PRIMARY KEY,
+  nameF VARCHAR(30),
+  nameI VARCHAR(30),
+  nameO VARCHAR(30),
+  login VARCHAR(30),
+  pass VARCHAR(30)
+);
+
+-- Table TakenItem
+DROP TABLE TakenItem IF EXISTS;
+
+CREATE TABLE TakenItem (
+  id INTEGER NOT NULL PRIMARY KEY,
+  idUser INTEGER,
+  idDisk INTEGER,
+  idUserTake INTEGER
+);

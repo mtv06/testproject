@@ -1,0 +1,37 @@
+INSERT INTO USER VALUES (1, 'Motov', 'Alexander', 'Valeryevich', 'motov', '12345');
+INSERT INTO USER VALUES (2, 'Sidorov', 'Petr', 'Petrovich', 'motov', '12345');
+INSERT INTO USER VALUES (3, 'Ivanov', 'Ivan', 'Ivanovich', 'ivanov', '12345');
+
+INSERT INTO DISK VALUES (1, 'The Creen Mile', 'The two-meter-long uneducated John Coffey (Michael Clarke Duncan) is accused of a terrible crime - rape and the murder of two little girls - and sentenced to death in an electric chair.');
+INSERT INTO DISK VALUES (2, 'Forrest Gump', 'Forrest Gump is a boy with a development gap. Peers all childhood and youth scoffed at him, but his mother loves him dearly, and Forrest grows happy and able to empathize.');
+INSERT INTO DISK VALUES (3, '1+1', 'Rich businessman Philip becomes disabled due to an accident (the prototype of the hero is the French aristocrat Philippe Pozzo di Borgo).');
+INSERT INTO DISK VALUES (4, 'Gladiator', 'The great emperor Marcus Aurelius after the next loud victory decides to hand over power, but not to his son Commodus, as many thought, but to the best general of the Roman legions Maximus.');
+INSERT INTO DISK VALUES (5, 'Officers', 'Classics of Soviet cinema. Military drama about the fate of Alexei Trofimov, his friend Ivan Varavva and wife Lyuba.');
+INSERT INTO DISK VALUES (6, 'Léon', 'If you want a job done well hire a professional.');
+INSERT INTO DISK VALUES (7, 'Moscow does not believe in tears', 'The Funniest, Tenderest Love Story of the Year.');
+INSERT INTO DISK VALUES (8, 'The Shawshank Redemption', 'Fear can hold you prisoner. Hope can set you free.');
+INSERT INTO DISK VALUES (9, 'Inception', 'Your mind is the scene of the crime.');
+INSERT INTO DISK VALUES (10, 'Snatch', 'Stealin'' Stones and Breakin'' Bones');
+INSERT INTO DISK VALUES (11, 'The Departed', 'Lies. Betrayal. Sacrifice. How far will you take it?');
+INSERT INTO DISK VALUES (12, 'The Game', 'The Game...You Just Lost');
+INSERT INTO DISK VALUES (13, 'Ghost', 'A love that will last forever');
+INSERT INTO DISK VALUES (14, 'Se7en', 'Long is the way, and hard, that out of hell leads up to light.');
+INSERT INTO DISK VALUES (15, 'The Silence of the Lambs', 'From the terrifying best seller');
+INSERT INTO DISK VALUES (16, 'The Prestige', 'A Friendship That Became a Rivalry.');
+
+INSERT INTO TAKENITEM VALUES (1, 1, 1, 1);
+INSERT INTO TAKENITEM VALUES (2, 1, 2, 1);
+INSERT INTO TAKENITEM VALUES (3, 1, 3, 1);
+INSERT INTO TAKENITEM VALUES (4, 1, 4, 1);
+INSERT INTO TAKENITEM VALUES (5, 1, 5, 1);
+INSERT INTO TAKENITEM VALUES (6, 2, 6, 2);
+INSERT INTO TAKENITEM VALUES (7, 2, 7, 2);
+INSERT INTO TAKENITEM VALUES (8, 2, 8, 2);
+INSERT INTO TAKENITEM VALUES (9, 2, 9, 2);
+INSERT INTO TAKENITEM VALUES (10, 2, 10, 2);
+INSERT INTO TAKENITEM VALUES (11, 3, 11, 3);
+INSERT INTO TAKENITEM VALUES (12, 3, 12, 3);
+INSERT INTO TAKENITEM VALUES (13, 3, 13, 3);
+INSERT INTO TAKENITEM VALUES (14, 3, 14, 3);
+INSERT INTO TAKENITEM VALUES (15, 3, 15, 3);
+INSERT INTO TAKENITEM VALUES (16, 3, 16, 3);
