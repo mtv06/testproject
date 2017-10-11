@@ -3,6 +3,7 @@ package ru.springboot.test.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,35 +15,63 @@ import java.util.List;
 @Controller
 public class DiskController {
 
-    public static final String REQUEST_METHOD_VIEW_NAME = "request_method";
-
     @Autowired
     public DiskServiceImpl diskService;
 
-//    @GetMapping("disk")
-//    public ResponseEntity<List<Disk>> getAllDisk() {
-//        List<Disk> list = diskService.getAllDisk();
-//        return new ResponseEntity<List<Disk>>(list, HttpStatus.OK);
-//    }
-
-//    @RequestMapping(value="/", method = RequestMethod.GET)
-//    @GetMapping(value="/index")
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView allDisk(Model model){
-//        model.addAttribute("method", "get");
-//        return REQUEST_METHOD_VIEW_NAME;
         ModelAndView mav = new ModelAndView();
         mav.setViewName("index");
         List<Disk> result = diskService.getAllDisk();
         mav.addObject("disk", result);
         return mav;
-//        return "index";
-//        return new ModelAndView("index");
-//        return diskService.getAllDisk().toString();
-//        Disk user = new Disk(); //можем здесь, например, достать из базы пользователя с ником name
-//        user.setFirstName("FirstName");
-//        user.setLastName("LastName");
-//
-//        return user;
+    }
+
+    @RequestMapping(value = "/free-disk", method = RequestMethod.GET)
+    public ModelAndView freeDisk(Model model){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("free-disk");
+        List<Disk> result = diskService.getAllDisk();
+        mav.addObject("disk", result);
+        return mav;
+    }
+
+    @RequestMapping(value = "/disk-taken-by-user", method = RequestMethod.GET)
+    public ModelAndView takenByUserDisk(Model model){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("disk-taken-by-user");
+        List<Disk> result = diskService.getAllDisk();
+        mav.addObject("disk", result);
+        return mav;
+    }
+
+    @RequestMapping(value = "/disk-taken-from-user", method = RequestMethod.GET)
+    public ModelAndView takenFromUserDisk(Model model){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("disk-taken-from-user");
+        List<Disk> result = diskService.getAllDisk();
+        mav.addObject("disk", result);
+        return mav;
+    }
+    @RequestMapping(value = "/add-disk", method = RequestMethod.POST)
+    public ModelAndView addDisk(@ModelAttribute Disk disk, Model model){
+        diskService.addDisk(disk);
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("/");
+        return mav;
+    }
+
+//    @RequestMapping(value = "/add-disks", method =  RequestMethod.POST )
+//    public void Disk(@ModelAttribute Disk disk, Model model){
+//        diskService.addDisk(disk);
+//        ModelAndView mav = new ModelAndView();
+//        mav.setViewName("/");
+//        return mav;
+//    }
+
+    @RequestMapping(value="/add-disks", method=RequestMethod.GET)
+    public String diskForm(Model model) {
+        model.addAttribute("disk", new Disk());
+        return "add-disk";
     }
 }
