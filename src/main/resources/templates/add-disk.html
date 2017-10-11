@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:form="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport"
@@ -7,44 +7,44 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous" />
-    <!--<link rel="import" href="/nav.html" />-->
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="nav">
+<div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="/add-disk">Add new disk<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/free-disk">Free disk list</a>
+                    <a class="nav-link" href="#">Free disk list</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/disk-taken-by-user">Disks taken by the user</a>
+                    <a class="nav-link" href="#">Disks taken by the user</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/disk-taken-from-user">Disks taken from the user</a>
+                    <a class="nav-link" href="#">Disks taken from the user</a>
                 </li>
             </ul>
         </div>
     </nav>
-    <br /><br />
     <div class="container">
         <div class="row">
             <div class="col-6 offset-3">
-                <form>
+                <form th:action="@{/add-disk}" th:object="${disk}" th:method="post">
                     <div class="form-group">
                         <!--<label for="exampleInputEmail1">Name</label>-->
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="nameHelp" placeholder="Name" />
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="nameHelp" placeholder="Name" th:field="*{name}" />
                         <small id="nameHelp" class="form-text text-muted">Enter the disc name.</small>
                     </div>
                     <div class="form-group">
                         <!--<label for="exampleInputPassword1">Description</label>-->
-                        <input type="text" class="form-control" id="exampleInputPassword1"  aria-describedby="descriptionHelp" placeholder="Description" />
+                        <input type="text" class="form-control" id="exampleInputPassword1"  aria-describedby="descriptionHelp" placeholder="Description" th:field="*{description}" />
                         <small id="descriptionHelp" class="form-text text-muted">Enter the description of the disk.</small>
                     </div>
                     <button type="submit" class="btn btn-primary">Add</button>
@@ -58,6 +58,6 @@
             <div class="col-4 offset-2" th:text="${item.description}"></div>
         </div>
     </div>
-
+</div>
 </body>
 </html>

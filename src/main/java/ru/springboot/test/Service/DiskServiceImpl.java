@@ -53,7 +53,7 @@ public class DiskServiceImpl implements DiskService {
         Disk d = new Disk();
         d.setName(disk.getName());
         d.setDescription(disk.getDescription());
-
+        session.save(d);
 //        String name = disk.getName();
 //        System.out.println("name - " + name);
 //        String description = disk.getDescription();

@@ -55,21 +55,14 @@ public class DiskController {
     }
     @RequestMapping(value = "/add-disk", method = RequestMethod.POST)
     public ModelAndView addDisk(@ModelAttribute Disk disk, Model model){
+        model.addAttribute("disk", disk);
         diskService.addDisk(disk);
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("/");
+        mav.setViewName("/index");
         return mav;
     }
 
-//    @RequestMapping(value = "/add-disks", method =  RequestMethod.POST )
-//    public void Disk(@ModelAttribute Disk disk, Model model){
-//        diskService.addDisk(disk);
-//        ModelAndView mav = new ModelAndView();
-//        mav.setViewName("/");
-//        return mav;
-//    }
-
-    @RequestMapping(value="/add-disks", method=RequestMethod.GET)
+    @RequestMapping(value="/add-disk", method=RequestMethod.GET)
     public String diskForm(Model model) {
         model.addAttribute("disk", new Disk());
         return "add-disk";

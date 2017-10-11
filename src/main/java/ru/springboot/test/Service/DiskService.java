@@ -9,5 +9,9 @@ public interface DiskService {
 
     public Session OpenSession();
     public List<Disk> getAllDisk();
+    public List<Disk> getFreeDisk();
+    public List<Disk> getDiskTakenByUser();
+    public List<Disk> getDiskTakenFromuser();
+    public void addDisk(Disk disk);
 
 }
