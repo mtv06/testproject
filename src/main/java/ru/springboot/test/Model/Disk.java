@@ -2,10 +2,11 @@ package ru.springboot.test.Model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name = "disk")
-public class Disk implements Serializable {
+public class Disk implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,6 +17,7 @@ public class Disk implements Serializable {
 
     @Column
     private String description;
+
 
     public Disk() {}
 

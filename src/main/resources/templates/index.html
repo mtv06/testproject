@@ -11,7 +11,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light" id="nav">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="/">Test</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -33,25 +33,6 @@
         </div>
     </nav>
     <br /><br />
-    <div class="container">
-        <div class="row">
-            <div class="col-6 offset-3">
-                <form>
-                    <div class="form-group">
-                        <!--<label for="exampleInputEmail1">Name</label>-->
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="nameHelp" placeholder="Name" />
-                        <small id="nameHelp" class="form-text text-muted">Enter the disc name.</small>
-                    </div>
-                    <div class="form-group">
-                        <!--<label for="exampleInputPassword1">Description</label>-->
-                        <input type="text" class="form-control" id="exampleInputPassword1"  aria-describedby="descriptionHelp" placeholder="Description" />
-                        <small id="descriptionHelp" class="form-text text-muted">Enter the description of the disk.</small>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Add</button>
-                </form>
-            </div>
-        </div>
-    </div>
     <div class="container">
         <div class="row" th:each="item : ${disk}">
             <div class="col-4 offset-2" th:text="${item.name}"></div>

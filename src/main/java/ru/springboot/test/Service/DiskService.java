@@ -11,7 +11,7 @@ public interface DiskService {
     public List<Disk> getAllDisk();
     public List<Disk> getFreeDisk();
     public List<Disk> getDiskTakenByUser();
-    public List<Disk> getDiskTakenFromuser();
+    public List<Disk> getDiskTakenFromUser();
     public void addDisk(Disk disk);
 
 }

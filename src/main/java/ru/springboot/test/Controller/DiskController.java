@@ -10,6 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 import ru.springboot.test.Model.Disk;
 import ru.springboot.test.Service.DiskServiceImpl;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Controller
@@ -31,8 +33,19 @@ public class DiskController {
     public ModelAndView freeDisk(Model model){
         ModelAndView mav = new ModelAndView();
         mav.setViewName("free-disk");
-        List<Disk> result = diskService.getAllDisk();
-        mav.addObject("disk", result);
+        List<Disk> result = diskService.getFreeDisk();
+        Iterator itr = result.iterator();
+        List<Disk> disk = new ArrayList<>();
+        while(itr.hasNext()) {
+            Object[] obj = (Object[]) itr.next();
+            String name = String.valueOf(obj[0]);
+            String description = String.valueOf(obj[1]);
+            Disk disks = new Disk();
+            disks.setName(name);
+            disks.setDescription(description);
+            disk.add(disks);
+        }
+        mav.addObject("disk", disk);
         return mav;
     }
 
@@ -40,7 +53,7 @@ public class DiskController {
     public ModelAndView takenByUserDisk(Model model){
         ModelAndView mav = new ModelAndView();
         mav.setViewName("disk-taken-by-user");
-        List<Disk> result = diskService.getAllDisk();
+        List<Disk> result = diskService.getDiskTakenByUser();
         mav.addObject("disk", result);
         return mav;
     }
@@ -49,7 +62,7 @@ public class DiskController {
     public ModelAndView takenFromUserDisk(Model model){
         ModelAndView mav = new ModelAndView();
         mav.setViewName("disk-taken-from-user");
-        List<Disk> result = diskService.getAllDisk();
+        List<Disk> result = diskService.getDiskTakenFromUser();
         mav.addObject("disk", result);
         return mav;
     }

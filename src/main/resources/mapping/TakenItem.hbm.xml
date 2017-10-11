@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="ru.springboot.test.Model.Takenitem" table="takenitem">
+        <id column="id" name="id" type="java.lang.Integer">
+            <generator class="increment"/>
+        </id>
+        <property column="idUserTake" name="idUserTake" type="java.lang.Integer"/>
+
+        <many-to-one name="idDisk" class="ru.springboot.test.Model.Disk"
+                     column="idDisk" not-null="true"/>
+        <many-to-one name="idUser" class="ru.springboot.test.Model.User"
+                     column="idUser" not-null="true"/>
+    </class>
+</hibernate-mapping>
