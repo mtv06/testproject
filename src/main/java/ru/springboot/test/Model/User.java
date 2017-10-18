@@ -2,11 +2,10 @@ package ru.springboot.test.Model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "User")
+@Table(name = "user")
 public class User implements Serializable {
 
     @Id
@@ -28,16 +27,18 @@ public class User implements Serializable {
     @Column
     private String pass;
 
-    private Set<Disk> userDisks = new HashSet<Disk>(0);
+    @OneToMany
+    private Set<Disk> disks;
 
-    public User(String eswar, Set<Disk> userDisk) {}
+    public User(){}
 
-    public User(String nameF, String nameI, String nameO, String login, String pass) {
+    public User(String nameF, String nameI, String nameO, String login, String pass, Set<Disk> disks) {
         this.nameF = nameF;
         this.nameI = nameI;
         this.nameO = nameO;
         this.login = login;
         this.pass = pass;
+        this.disks = disks;
     }
 
     public int getId() {
@@ -88,12 +89,12 @@ public class User implements Serializable {
         this.pass = pass;
     }
 
-    public Set<Disk> getUserDisks() {
-        return userDisks;
+    public Set<Disk> getDisks() {
+        return disks;
     }
 
-    public void setUserDisks(Set<Disk> userDisks) {
-        this.userDisks = userDisks;
+    public void setDisks(Set<Disk> disks) {
+        this.disks = disks;
     }
 
     @Override

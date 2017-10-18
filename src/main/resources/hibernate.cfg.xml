@@ -12,9 +12,12 @@
         <property name="connection.pool_size">1</property>
         <property name="show_sql">true</property>
         <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+        <!--<property name="hbm2ddl.auto">create</property>-->
 
-        <mapping resource="mapping/Disk.hbm.xml"/>
-        <mapping resource="mapping/User.hbm.xml"/>
+        <mapping class="ru.springboot.test.Model.User"/>
+        <mapping class="ru.springboot.test.Model.Disk"/>
+        <!--<mapping resource="mapping/Disk.hbm.xml"/>-->
+        <!--<mapping resource="mapping/User.hbm.xml"/>-->
         <!--<mapping resource="mapping/Takenitem.hbm.xml"/>-->
     </session-factory>
 

@@ -67,12 +67,12 @@ public class DiskController {
         return mav;
     }
     @RequestMapping(value = "/add-disk", method = RequestMethod.POST)
-    public ModelAndView addDisk(@ModelAttribute Disk disk, Model model){
+    public String  addDisk(Integer userId, @ModelAttribute Disk disk, Model model){
         model.addAttribute("disk", disk);
-        diskService.addDisk(disk);
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("/index");
-        return mav;
+        userId = 3;
+        diskService.addDisk(userId, disk);
+        return "index";
+
     }
 
     @RequestMapping(value="/add-disk", method=RequestMethod.GET)

@@ -1,13 +1,11 @@
 package ru.springboot.test.Service;
 
-import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Service;
 import ru.springboot.test.HibernateConfig;
 import ru.springboot.test.Model.Disk;
-import ru.springboot.test.Model.Takenitem;
 import ru.springboot.test.Model.User;
 
 
@@ -33,19 +31,14 @@ public class DiskServiceImpl implements DiskService {
         session = OpenSession();
         String hql = "from Disk";
         Query query = session.createQuery(hql);
-//        Query query = session.createSQLQuery("select * from disk");
-        List<Disk> result = query.list();
         transaction.commit();
-        System.out.println(result);
-        session.close();
-        return result;
+        return query.list();
     }
 
     @Override
     public List<Disk> getFreeDisk() {
         session = OpenSession();
         String hql = "SELECT d.name, d.description FROM Disk d inner join Takenitem t on d.id=t.idDisk where t.idUser=t.idUserTake";
-//        Query query = session.createQuery(hql);
         Query query = session.createSQLQuery(hql);
         List<Disk> result = query.list();
         transaction.commit();
@@ -64,34 +57,14 @@ public class DiskServiceImpl implements DiskService {
     }
 
     @Override
-    public void addDisk(Disk disk) {
-//        session = OpenSession();
-////        Disk d = new Disk();
-////        d.setName(disk.getName());
-////        d.setDescription(disk.getDescription());
-////        session.save(d);
-//        Set<Disk> userDisks = new HashSet<Disk>();
-//        userDisks.add(new Disk( disk.getName(), disk.getDescription()));
-//        session.save(userDisks);
-//        transaction.commit();
-//        session.close();
-        try {
-            session = OpenSession();
-
-            Set<Disk> userDisk = new HashSet<Disk>();
-            userDisk.add(new Disk("house","32354353"));
-            userDisk.add(new Disk("mobile","9889343423"));
-
-            User user = new User("Eswar", userDisk);
-            session.save(user);
-
-            transaction.commit();
-        } catch (HibernateException e) {
-            transaction.rollback();
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
+    public void addDisk(Integer userId, Disk disk) {
+        session = OpenSession();
+        session.save(disk);
+        User user = (User)session.get(User.class, userId);
+        user.getDisks().add(disk);
+        session.save(user);
+        transaction.commit();
+        session.close();
     }
 
 }
