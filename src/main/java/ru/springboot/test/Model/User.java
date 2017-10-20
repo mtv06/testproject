@@ -30,15 +30,27 @@ public class User implements Serializable {
     @OneToMany
     private Set<Disk> disks;
 
+    @OneToMany
+    private Set<Disk> taken;
+
+    public Set<Disk> getTaken() {
+        return taken;
+    }
+
+    public void setTaken(Set<Disk> taken) {
+        this.taken = taken;
+    }
+
     public User(){}
 
-    public User(String nameF, String nameI, String nameO, String login, String pass, Set<Disk> disks) {
+    public User(String nameF, String nameI, String nameO, String login, String pass, Set<Disk> disks, Set<Disk> taken) {
         this.nameF = nameF;
         this.nameI = nameI;
         this.nameO = nameO;
         this.login = login;
         this.pass = pass;
         this.disks = disks;
+        this.taken = taken;
     }
 
     public int getId() {
